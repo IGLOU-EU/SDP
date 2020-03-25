@@ -66,14 +66,14 @@ out_dir="${out_dir:-./public/}"
 out_css="${out_css:-draw_${canvas_c}x${canvas_r}.css}"
 out_html="${out_html:-draw_${canvas_c}x${canvas_r}.html}"
 
-in_css="$(cat ${in_css})"
-in_html="$(cat ${in_html})"
+in_css="$(cat "${in_css}")"
+in_html="$(cat "${in_html}")"
 
 grid_css=""
 grid_check=""
 grid_cells=""
 
-let "cells = ${canvas_r} * ${canvas_c}"
+((cells = canvas_r * canvas_c))
 
 # MAIN
 buildGrid "black"

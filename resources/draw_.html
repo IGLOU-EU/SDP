@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>[=draw_title]</title>
+		<meta name="description"  content="">
+		<meta name="author"       content="">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet"    href="[=out_css]" type="text/css">
+	</head>
+	<body>
+        <header id="config">
+            <fieldset>
+                <label for="select-color-black" id="select-color-label-black" title="Select color Black" class="button circle color" accesskey="b"></label>
+                <label for="select-color-white" id="select-color-label-white" title="Select color White" class="button circle color" accesskey="w"></label>
+                <label for="select-color-red"   id="select-color-label-red"   title="Select color Red"   class="button circle color" accesskey="r"></label>
+                <label for="select-color-green" id="select-color-label-green" title="Select color Green" class="button circle color" accesskey="g"></label>
+                <label for="select-color-blue"  id="select-color-label-blue"  title="Select color Blue"  class="button circle color" accesskey="b"></label>
+            </fieldset>
+            <fieldset>
+                <label for="opacity-color" title="Additive color mixing"  class="button" accesskey="c">Color mixing</label>
+                <label for="show-border"   title="Show line arround cell" class="button" accesskey="x">Border</label>
+                <label for="canvas-reset" class="button" accesskey="r">Reset</label>
+            </fieldset>
+        </header>
+        <form id="canvas">
+            <input type="reset"    id="canvas-reset"       name="resel canvas"                 hidden>
+            <input type="checkbox" id="show-border"        name="show border"                  hidden checked>
+            <input type="checkbox" id="opacity-color"      name="color mixing"                 hidden>
+            <input type="radio"    id="select-color-black" name="color selector" value="black" hidden checked>
+            <input type="radio"    id="select-color-white" name="color selector" value="white" hidden>
+            <input type="radio"    id="select-color-red"   name="color selector" value="red"   hidden>
+            <input type="radio"    id="select-color-green" name="color selector" value="green" hidden>
+            <input type="radio"    id="select-color-blue"  name="color selector" value="blue"  hidden>
+            [=grid_check]
+            <div id="grid-cells">
+                [=grid_cells]
+            </div>
+            <aside id="config-indicator">
+                <span id="config-indicator--black"  title="Selected color"        class="legend color" ></span>
+                <span id="config-indicator--white"  title="Selected color"        class="legend color" ></span>
+                <span id="config-indicator--red"    title="Selected color"        class="legend color" ></span>
+                <span id="config-indicator--green"  title="Selected color"        class="legend color" ></span>
+                <span id="config-indicator--blue"   title="Selected color"        class="legend color" ></span>
+                <span id="config-indicator--mixing" title="Additive color active" class="legend"       ></span>
+                <span id="config-indicator--border" title="Cell border active"    class="legend"       ></span>
+            </aside>
+        </form>
+        <footer>
+        </footer>
+    </body>
+</html>

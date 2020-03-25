@@ -1,0 +1,153 @@
+/* CSS BASE */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#config {
+    display: flex;
+    padding: .3em 1em;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+fieldset {
+    border: none;
+}
+
+.button {
+    color: darkblue;
+    cursor: pointer;
+    border: .1em solid transparent;
+    padding: .2em;
+    box-shadow: .1em .1em .1em black;
+    border-radius: .3em;
+    vertical-align: sub;
+    background-color: white;
+}
+
+.button:hover {
+    box-shadow: inset .1em .1em .1em black;
+}
+
+.button.circle {
+    border-radius: 25%;
+}
+
+.button.color {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--color);
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#grid-cells {
+    height: calc(100vmin - 2.4em);
+    width: calc(100vmin - 2.4em);
+    margin: auto;
+    position: relative;
+}
+
+.cells {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: grid;
+    position: absolute;
+    grid-template-rows: repeat([=canvas_r], 1fr);
+    grid-template-columns: repeat([=canvas_c], 1fr);
+}
+
+#config-indicator {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.legend {
+    width: 2em;
+    height: 2em;
+    margin: .1em 0;
+    border: 1px solid gray;
+    display: none;
+    position: relative;
+    border-radius: 3px;
+}
+
+.legend.color {
+    background-color: var(--color);
+}
+
+#config-indicator--border::before {
+    content: "";
+    border: 1px solid black;
+    width: 75%;
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+}
+
+#config-indicator--mixing::after,
+#config-indicator--mixing::before {
+    content: "";
+    border: 1px solid black;
+    width: 50%;
+    height: 50%;
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+
+#config-indicator--mixing::before {
+    margin-left: 25%;
+    margin-top: -25%;
+    border-color: lightgray;
+}
+
+/* RVB */
+#color-black, #select-color-label-black, #config-indicator--black {--color: #000}
+#color-white, #select-color-label-white, #config-indicator--white {--color: #fff}
+#color-red  , #select-color-label-red  , #config-indicator--red   {--color: #f00}
+#color-green, #select-color-label-green, #config-indicator--green {--color: #0f0}
+#color-blue , #select-color-label-blue , #config-indicator--blue  {--color: #00f}
+
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-black {--color: #0008}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-white {--color: #fff8}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-red   {--color: #f008}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-green {--color: #0f08}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-blue  {--color: #00f8}
+
+/* SELECTOR */
+label.cell{background-color: var(--color); opacity: 0}
+
+#show-border[type="checkbox"]:checked ~ #grid-cells,
+#show-border[type="checkbox"]:checked ~ #grid-cells .cells .cell
+{box-shadow: inset 0 0 1px black}
+
+#select-color-red[type="radio"]:checked   ~ #grid-cells #color-red   ,
+#select-color-blue[type="radio"]:checked  ~ #grid-cells #color-blue  ,
+#select-color-black[type="radio"]:checked ~ #grid-cells #color-black ,
+#select-color-white[type="radio"]:checked ~ #grid-cells #color-white ,
+#select-color-green[type="radio"]:checked ~ #grid-cells #color-green
+{z-index: 1}
+
+#show-border[type="checkbox"]:checked     ~ #config-indicator #config-indicator--border,
+#opacity-color[type="checkbox"]:checked   ~ #config-indicator #config-indicator--mixing,
+#select-color-red[type="radio"]:checked   ~ #config-indicator #config-indicator--red  ,
+#select-color-blue[type="radio"]:checked  ~ #config-indicator #config-indicator--blue ,
+#select-color-black[type="radio"]:checked ~ #config-indicator #config-indicator--black,
+#select-color-white[type="radio"]:checked ~ #config-indicator #config-indicator--white,
+#select-color-green[type="radio"]:checked ~ #config-indicator #config-indicator--green
+{display: block}
+
+/* COLOR SELECTOR */
+[=grid_css]

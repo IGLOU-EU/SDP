@@ -55,6 +55,15 @@ insertData()
     msg "Insert '${_patern}' to '${_var}'"
 }
 
+writeoutput()
+{
+    local _data="${1}"
+    local _fout="${2}"
+
+    echo "$_data" > "$_fout" || err "Fail to write '${_fout}'"
+    msg "Write '${_fout}' done"
+}
+
 # VAR
 canvas_r="${canvas_r:-15}"
 canvas_c="${canvas_c:-15}"
@@ -89,7 +98,7 @@ insertData "in_html" "out_css"
 insertData "in_html" "grid_check"
 insertData "in_html" "grid_cells"
 
-echo "$in_html" > "$out_dir$out_html"
-echo "$in_css" > "$out_dir$out_css"
+writeoutput "$in_html" "$out_dir$out_html"
+writeoutput "$in_css"  "$out_dir$out_css"
 
 quit

@@ -113,7 +113,7 @@ fieldset {
     border-color: lightgray;
 }
 
-/* RVB */
+/* BWRVB */
 #color-black, #select-color-label-black, #config-indicator--black {--color: #000}
 #color-white, #select-color-label-white, #config-indicator--white {--color: #fff}
 #color-red  , #select-color-label-red  , #config-indicator--red   {--color: #f00}
@@ -126,12 +126,23 @@ fieldset {
 #opacity-color[type="checkbox"]:checked ~ #grid-cells #color-green {--color: #0f08}
 #opacity-color[type="checkbox"]:checked ~ #grid-cells #color-blue  {--color: #00f8}
 
-/* SELECTOR */
-label.cell{background-color: var(--color); opacity: 0}
+/* BORDER */
+#color-transparent {
+    z-index: 100;
+    pointer-events: none;
+}
+
+#color-transparent .cell {
+    opacity: 100;
+}
 
 #show-border[type="checkbox"]:checked ~ #grid-cells,
-#show-border[type="checkbox"]:checked ~ #grid-cells .cells .cell
-{box-shadow: inset 0 0 1px black}
+#show-border[type="checkbox"]:checked ~ #grid-cells #color-transparent .cell {
+    box-shadow: inset 0 0 0 1px grey;
+}
+
+/* SELECTOR */
+label.cell{background-color: var(--color); opacity: 0}
 
 #select-color-red[type="radio"]:checked   ~ #grid-cells #color-red   ,
 #select-color-blue[type="radio"]:checked  ~ #grid-cells #color-blue  ,

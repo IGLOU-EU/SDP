@@ -106,6 +106,7 @@ buildGrid "red"
 buildGrid "green"
 buildGrid "blue"
 buildGrid "white"
+buildGrid "transparent"
 
 insertData "in_css" "grid_css"
 insertData "in_css" "canvas_r"

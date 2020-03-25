@@ -25,6 +25,16 @@ quit()
     exit 0
 }
 
+initBuilder()
+{
+    [[ $canvas_r -gt 0 ]] || err "Rows canot be lower or equal 0"
+    [[ $canvas_c -gt 0 ]] || err "Columns canot be lower or equal 0"
+
+    [[ -r $in_css ]]   || err "Cant't find '$in_css' file"
+    [[ -r $in_html ]]  || err "Cant't find '$in_html' file"
+    [[ -w $out_dir ]]  || err "Folder '$out_dir' not writable for '${USER:-...}'"
+}
+
 buildGrid()
 {
     local _gcss
@@ -65,6 +75,13 @@ writeoutput()
 }
 
 # VAR
+cells=""
+in_css=""
+in_html=""
+grid_css=""
+grid_check=""
+grid_cells=""
+
 canvas_r="${canvas_r:-15}"
 canvas_c="${canvas_c:-15}"
 
@@ -75,16 +92,13 @@ out_dir="${out_dir:-./public/}"
 out_css="${out_css:-draw_${canvas_c}x${canvas_r}.css}"
 out_html="${out_html:-draw_${canvas_c}x${canvas_r}.html}"
 
+# MAIN
+initBuilder
+
 in_css="$(cat "${in_css}")"
 in_html="$(cat "${in_html}")"
-
-grid_css=""
-grid_check=""
-grid_cells=""
-
 ((cells = canvas_r * canvas_c))
 
-# MAIN
 buildGrid "black"
 buildGrid "red"
 buildGrid "green"

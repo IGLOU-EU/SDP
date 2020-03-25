@@ -1,0 +1,153 @@
+/* CSS BASE */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#config {
+    display: flex;
+    padding: .3em 1em;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+fieldset {
+    border: none;
+}
+
+.button {
+    color: darkblue;
+    cursor: pointer;
+    border: .1em solid transparent;
+    padding: .2em;
+    box-shadow: .1em .1em .1em black;
+    border-radius: .3em;
+    vertical-align: sub;
+    background-color: white;
+}
+
+.button:hover {
+    box-shadow: inset .1em .1em .1em black;
+}
+
+.button.circle {
+    border-radius: 25%;
+}
+
+.button.color {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--color);
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#grid-cells {
+    height: calc(100vmin - 2.4em);
+    width: calc(100vmin - 2.4em);
+    margin: auto;
+    position: relative;
+}
+
+.cells {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    display: grid;
+    position: absolute;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#config-indicator {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+.legend {
+    width: 2em;
+    height: 2em;
+    margin: .1em 0;
+    border: 1px solid gray;
+    display: none;
+    position: relative;
+    border-radius: 3px;
+}
+
+.legend.color {
+    background-color: var(--color);
+}
+
+#config-indicator--border::before {
+    content: "";
+    border: 1px solid black;
+    width: 75%;
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+}
+
+#config-indicator--mixing::after,
+#config-indicator--mixing::before {
+    content: "";
+    border: 1px solid black;
+    width: 50%;
+    height: 50%;
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+
+#config-indicator--mixing::before {
+    margin-left: 25%;
+    margin-top: -25%;
+    border-color: lightgray;
+}
+
+/* RVB */
+#color-black, #select-color-label-black, #config-indicator--black {--color: #000}
+#color-white, #select-color-label-white, #config-indicator--white {--color: #fff}
+#color-red  , #select-color-label-red  , #config-indicator--red   {--color: #f00}
+#color-green, #select-color-label-green, #config-indicator--green {--color: #0f0}
+#color-blue , #select-color-label-blue , #config-indicator--blue  {--color: #00f}
+
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-black {--color: #0008}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-white {--color: #fff8}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-red   {--color: #f008}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-green {--color: #0f08}
+#opacity-color[type="checkbox"]:checked ~ #grid-cells #color-blue  {--color: #00f8}
+
+/* SELECTOR */
+label.cell{background-color: var(--color); opacity: 0}
+
+#show-border[type="checkbox"]:checked ~ #grid-cells,
+#show-border[type="checkbox"]:checked ~ #grid-cells .cells .cell
+{box-shadow: inset 0 0 1px black}
+
+#select-color-red[type="radio"]:checked   ~ #grid-cells #color-red   ,
+#select-color-blue[type="radio"]:checked  ~ #grid-cells #color-blue  ,
+#select-color-black[type="radio"]:checked ~ #grid-cells #color-black ,
+#select-color-white[type="radio"]:checked ~ #grid-cells #color-white ,
+#select-color-green[type="radio"]:checked ~ #grid-cells #color-green
+{z-index: 1}
+
+#show-border[type="checkbox"]:checked     ~ #config-indicator #config-indicator--border,
+#opacity-color[type="checkbox"]:checked   ~ #config-indicator #config-indicator--mixing,
+#select-color-red[type="radio"]:checked   ~ #config-indicator #config-indicator--red  ,
+#select-color-blue[type="radio"]:checked  ~ #config-indicator #config-indicator--blue ,
+#select-color-black[type="radio"]:checked ~ #config-indicator #config-indicator--black,
+#select-color-white[type="radio"]:checked ~ #config-indicator #config-indicator--white,
+#select-color-green[type="radio"]:checked ~ #config-indicator #config-indicator--green
+{display: block}
+
+/* COLOR SELECTOR */
+#cell-black-1[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-1, #cell-black-2[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-2, #cell-black-3[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-3, #cell-black-4[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-4, #cell-black-5[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-5, #cell-black-6[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-6, #cell-black-7[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-7, #cell-black-8[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-8, #cell-black-9[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-9, #cell-black-10[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-10, #cell-black-11[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-11, #cell-black-12[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-12, #cell-black-13[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-13, #cell-black-14[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-14, #cell-black-15[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-15, #cell-black-16[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-16, #cell-black-17[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-17, #cell-black-18[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-18, #cell-black-19[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-19, #cell-black-20[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-20, #cell-black-21[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-21, #cell-black-22[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-22, #cell-black-23[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-23, #cell-black-24[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-24, #cell-black-25[type="checkbox"]:checked ~ #grid-cells #color-black #celldraw-black-25 {opacity: 100%} #cell-red-1[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-1, #cell-red-2[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-2, #cell-red-3[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-3, #cell-red-4[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-4, #cell-red-5[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-5, #cell-red-6[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-6, #cell-red-7[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-7, #cell-red-8[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-8, #cell-red-9[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-9, #cell-red-10[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-10, #cell-red-11[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-11, #cell-red-12[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-12, #cell-red-13[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-13, #cell-red-14[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-14, #cell-red-15[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-15, #cell-red-16[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-16, #cell-red-17[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-17, #cell-red-18[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-18, #cell-red-19[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-19, #cell-red-20[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-20, #cell-red-21[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-21, #cell-red-22[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-22, #cell-red-23[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-23, #cell-red-24[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-24, #cell-red-25[type="checkbox"]:checked ~ #grid-cells #color-red #celldraw-red-25 {opacity: 100%} #cell-green-1[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-1, #cell-green-2[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-2, #cell-green-3[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-3, #cell-green-4[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-4, #cell-green-5[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-5, #cell-green-6[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-6, #cell-green-7[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-7, #cell-green-8[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-8, #cell-green-9[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-9, #cell-green-10[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-10, #cell-green-11[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-11, #cell-green-12[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-12, #cell-green-13[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-13, #cell-green-14[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-14, #cell-green-15[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-15, #cell-green-16[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-16, #cell-green-17[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-17, #cell-green-18[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-18, #cell-green-19[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-19, #cell-green-20[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-20, #cell-green-21[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-21, #cell-green-22[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-22, #cell-green-23[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-23, #cell-green-24[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-24, #cell-green-25[type="checkbox"]:checked ~ #grid-cells #color-green #celldraw-green-25 {opacity: 100%} #cell-blue-1[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-1, #cell-blue-2[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-2, #cell-blue-3[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-3, #cell-blue-4[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-4, #cell-blue-5[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-5, #cell-blue-6[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-6, #cell-blue-7[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-7, #cell-blue-8[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-8, #cell-blue-9[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-9, #cell-blue-10[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-10, #cell-blue-11[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-11, #cell-blue-12[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-12, #cell-blue-13[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-13, #cell-blue-14[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-14, #cell-blue-15[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-15, #cell-blue-16[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-16, #cell-blue-17[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-17, #cell-blue-18[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-18, #cell-blue-19[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-19, #cell-blue-20[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-20, #cell-blue-21[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-21, #cell-blue-22[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-22, #cell-blue-23[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-23, #cell-blue-24[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-24, #cell-blue-25[type="checkbox"]:checked ~ #grid-cells #color-blue #celldraw-blue-25 {opacity: 100%} #cell-white-1[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-1, #cell-white-2[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-2, #cell-white-3[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-3, #cell-white-4[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-4, #cell-white-5[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-5, #cell-white-6[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-6, #cell-white-7[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-7, #cell-white-8[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-8, #cell-white-9[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-9, #cell-white-10[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-10, #cell-white-11[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-11, #cell-white-12[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-12, #cell-white-13[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-13, #cell-white-14[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-14, #cell-white-15[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-15, #cell-white-16[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-16, #cell-white-17[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-17, #cell-white-18[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-18, #cell-white-19[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-19, #cell-white-20[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-20, #cell-white-21[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-21, #cell-white-22[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-22, #cell-white-23[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-23, #cell-white-24[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-24, #cell-white-25[type="checkbox"]:checked ~ #grid-cells #color-white #celldraw-white-25 {opacity: 100%} 

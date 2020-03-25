@@ -5,9 +5,8 @@ OUTPUT_FOLDER := "./public"
 OUTPUT_PREFIX := "draw_"
 
 .PHONY: all
-all:
-	build_all
-	build_index
+all: build_all build_index
+	@echo "All build done !"
 
 .PHONY: build
 build:

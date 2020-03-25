@@ -81,6 +81,7 @@ in_html=""
 grid_css=""
 grid_check=""
 grid_cells=""
+draw_title=""
 
 canvas_r="${canvas_r:-15}"
 canvas_c="${canvas_c:-15}"
@@ -97,6 +98,7 @@ initBuilder
 
 in_css="$(cat "${in_css}")"
 in_html="$(cat "${in_html}")"
+draw_title="[SDP] Drawing canvas ${canvas_c}x${canvas_r}"
 ((cells = canvas_r * canvas_c))
 
 buildGrid "black"
@@ -111,6 +113,7 @@ insertData "in_css" "canvas_c"
 insertData "in_html" "out_css"
 insertData "in_html" "grid_check"
 insertData "in_html" "grid_cells"
+insertData "in_html" "draw_title"
 
 writeoutput "$in_html" "$out_dir$out_html"
 writeoutput "$in_css"  "$out_dir$out_css"

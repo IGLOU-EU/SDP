@@ -16,6 +16,7 @@ build:
 build_all:
 	canvas_r=5 canvas_c=5 $(BUILDER)
 	canvas_r=10 canvas_c=10 $(BUILDER)
+	canvas_r=15 canvas_c=15 $(BUILDER)
 	canvas_r=20 canvas_c=20 $(BUILDER)
 	canvas_r=50 canvas_c=50 $(BUILDER)
 

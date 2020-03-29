@@ -14,11 +14,10 @@ build:
 
 .PHONY: build_all
 build_all:
-	canvas_r=5 canvas_c=5 $(BUILDER)
-	canvas_r=10 canvas_c=10 $(BUILDER)
-	canvas_r=15 canvas_c=15 $(BUILDER)
-	canvas_r=20 canvas_c=20 $(BUILDER)
-	canvas_r=50 canvas_c=50 $(BUILDER)
+	canvas_r=8 canvas_c=8 $(BUILDER)
+	canvas_r=16 canvas_c=16 $(BUILDER)
+	canvas_r=24 canvas_c=24 $(BUILDER)
+	canvas_r=32 canvas_c=32 $(BUILDER)
 
 .PHONY: build_index
 build_index:

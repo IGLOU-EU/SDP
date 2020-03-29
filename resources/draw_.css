@@ -58,9 +58,9 @@ fieldset {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 0;
     display: grid;
     position: absolute;
+    pointer-events: none;
     grid-template-rows: repeat([=canvas_r], 1fr);
     grid-template-columns: repeat([=canvas_c], 1fr);
 }
@@ -149,7 +149,7 @@ label.cell{background-color: var(--color); opacity: 0}
 #select-color-black[type="radio"]:checked ~ #grid-cells #color-black ,
 #select-color-white[type="radio"]:checked ~ #grid-cells #color-white ,
 #select-color-green[type="radio"]:checked ~ #grid-cells #color-green
-{z-index: 1}
+{pointer-events: auto;}
 
 #show-border[type="checkbox"]:checked     ~ #config-indicator #config-indicator--border,
 #opacity-color[type="checkbox"]:checked   ~ #config-indicator #config-indicator--mixing,

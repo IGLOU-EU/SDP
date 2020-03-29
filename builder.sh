@@ -102,8 +102,8 @@ draw_title="[SDP] Drawing canvas ${canvas_c}x${canvas_r}"
 ((cells = canvas_r * canvas_c))
 
 buildGrid "black"
-buildGrid "red"
 buildGrid "green"
+buildGrid "red"
 buildGrid "blue"
 buildGrid "white"
 buildGrid "transparent"

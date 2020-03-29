@@ -22,6 +22,12 @@
         <ul>
             [=index]
         </ul>
+        <h2>FAQ</h2>
+        <p><b>How it work ?</b><br />The grid is constituted by X cells. Each cell are a stack of 6 colored pixel (Black, White, Red, Green, Blue + Border). This pixel is a label linked to a unique checkbox. If the checkbox of a cell is checked, the cell apear.</p>
+        <p><b>Why select a color can auto change color of some pixel ?</b><br />Because of non using programming language, i can't check what color is last active, or i can't replace the existing color. This is a stacking problem. On non 'mixing color', a selected color take a z-index+1 but if more of 1 color is selected the z-index is equal so, the html priority is applie.</p>
+        <p><b>Why a 'Mixing color' option ?</b><br />We can use the 'stacking problem' for mixing color and use more than 5 'color'. This is not perfect, but it's working.</p>
+        <p><b>Use js canva is more efficient and don't have all this limitation. Why did you make this dumb project ?</b><br />This is a research project, a concept, this is not for a real and practical usage.</p>
+        <hr>
         <p>Simple projet from <a href="https://iglou.eu">iglou.eu</a> source code on <a href="https://git.iglou.eu/Laboratory/SDP">git.iglou.eu</a></p>
         <p>Under MIT License</p>
     </body>
